@@ -1,0 +1,1 @@
+g++ circle.cpp snake.cpp square.cpp vertex.cpp board.cpp gameWindow.cpp main.cpp -lGL -lGLU -lglut

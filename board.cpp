@@ -24,8 +24,7 @@ void Board::drawBoard(){
                                 -1.f, 1.f - rate};
     
     
-    glColor3f(0, 0, 0);
-    glBegin(GL_LINES);
+    
 
     for(int row=0; row<this->rowsNumber; row++){
         for(int column=0; column<this->columnsNumber; column++){
@@ -36,13 +35,17 @@ void Board::drawBoard(){
 
             Square square(v1, v2, v3, v4);
             this->squares[row][column] = square;
-            square.drawSquare();
+            
+            if((row==0 || row==this->getRowsNumber()-1)) square.drawSolidSquare();
+            else if((column==0 || column==this->getColumnsNumber()-1))square.drawSolidSquare();
+            else square.drawSquare();
 
             screenCoordenates[0] = screenCoordenates[0]+rate;
             screenCoordenates[2] = screenCoordenates[2]+rate;
             screenCoordenates[4] = screenCoordenates[4]+rate;
             screenCoordenates[6] = screenCoordenates[6]+rate;    
         }
+        
         screenCoordenates[0] = -1.0f;
         screenCoordenates[1] = screenCoordenates[1]-rate;
         screenCoordenates[2] = -1.0f + rate;
@@ -53,11 +56,19 @@ void Board::drawBoard(){
         screenCoordenates[7] = screenCoordenates[7]-rate;
     }
 
-    glEnd();
+    
     glutSwapBuffers();
     
 }
 
 Square **Board::getBoard(){
     return this->squares; 
+}
+
+int Board::getRowsNumber(){
+    return this->rowsNumber;
+}
+
+int Board::getColumnsNumber(){
+    return this->columnsNumber;
 }

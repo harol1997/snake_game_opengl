@@ -12,9 +12,11 @@ class Square{
         Square(Vertex, Vertex, Vertex, Vertex);
         void drawSquare();
         void drawOneSquare();
+        void drawSolidSquare();
         Vertex getV1();
         Vertex getV2();
         Vertex getV3();
         Vertex getV4();
-        float getL();  // distance between two vertex;    
+        float getL();  // distance between two vertex
+        static bool Compare(Square, Square);  
 };

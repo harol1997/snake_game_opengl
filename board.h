@@ -13,4 +13,6 @@ class Board{
         Board(int, int, float);
         void drawBoard();
         Square **getBoard();
+        int getRowsNumber();
+        int getColumnsNumber();
 };

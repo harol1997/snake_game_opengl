@@ -22,4 +22,5 @@ class Snake{
         void eat();
         void move(unsigned char);
         void increase();
+        std::list<Vertex> getPositions();//get Body
 };

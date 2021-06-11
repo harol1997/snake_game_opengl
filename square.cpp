@@ -14,8 +14,11 @@ Square::Square(){
 
 }
 
-void Square::drawSquare(){  // you have to degine glCOlor, glBegin , glENd and GLSwap where you will use this function
+void Square::drawSquare(){  // // Afer you have to CleanBuffer --> GLSwap where you will use this function
     
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINES);
+
     glVertex2f(v1.getX(), v1.getY());
     glVertex2f(v2.getX(), v2.getY());
 
@@ -26,7 +29,22 @@ void Square::drawSquare(){  // you have to degine glCOlor, glBegin , glENd and G
     glVertex2f(v4.getX(), v4.getY());
 
     glVertex2f(v4.getX(), v4.getY());
-    glVertex2f(v1.getX(), v1.getY());   
+    glVertex2f(v1.getX(), v1.getY());
+
+    glEnd();   
+}
+
+void Square::drawSolidSquare(){  // Afer you have to CleanBuffer
+    //draw the new square
+    glColor3f(0.53f, 0.5f, 0.51f);
+    glBegin(GL_QUADS);
+    
+    glVertex2f(v1.getX(), v1.getY());
+    glVertex2f(v2.getX(), v2.getY());
+    glVertex2f(v3.getX(), v3.getY());
+    glVertex2f(v4.getX(), v4.getY());
+    
+    glEnd();
 }
 
 void Square::drawOneSquare(){
@@ -86,4 +104,8 @@ Vertex Square::getV4(){
 
 float Square::getL(){
     return Vertex::getDistance(this->v1, this->v2);
+}
+
+bool Square::Compare(Square s1, Square s2){
+    return Vertex::Compare(s1.v1, s2.v1) && Vertex::Compare(s1.v2, s2.v2) && Vertex::Compare(s1.v3, s2.v3) && Vertex::Compare(s1.v4, s2.v4);
 }

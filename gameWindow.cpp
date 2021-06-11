@@ -19,27 +19,42 @@ void frame(){
 }
 
 void loop(int i){
-    board.drawBoard();
-    snake.move(snake.getLastDirection());
-    snake.drawBody();
-    glutTimerFunc(timeRate, loop, 0);
+    
+    if(i==0){
+        
+        snake.move(snake.getLastDirection());
+        
+        bool lost = false; 
+        for(int i=0; i<board.getRowsNumber(); i++){
+            int snakeHeaderX = snake.getPositions().front().getX(); 
+            int snakeHeaderY = snake.getPositions().front().getY();
+            if(i == snakeHeaderX && (snakeHeaderY == 0 || snakeHeaderY == board.getColumnsNumber()-1))lost = true;
+        }
+        if(!lost){
+            for(int i=0; i<board.getColumnsNumber(); i++){
+                int snakeHeaderX = snake.getPositions().front().getX(); 
+                int snakeHeaderY = snake.getPositions().front().getY();
+                if(i == snakeHeaderY && (snakeHeaderX == 0 || snakeHeaderX == board.getRowsNumber()-1))lost = true;
+            }
+        }
+        snake.drawBody();
+        if(lost) glutTimerFunc(timeRate, loop, 1);
+        else glutTimerFunc(timeRate, loop, 0);
+    }
 }
 
-void loop2(){
-    Window::initWindow();
-    
-}
 
 void keyEvent(unsigned char key, int x, int y){
-    //Window::initWindow();
-    board.drawBoard();
+    
+    //board.drawBoard();
     snake.move(key);
     snake.drawBody();
+    
 }
 
 void Window::initWindow(){
     glClearColor(0.8549f, 0.8549f, 0.8549f, 1.0f);  // similar color , clean background color
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clear the color buffer
+    glClear(GL_COLOR_BUFFER_BIT);  // clear the color buffer
     glutSwapBuffers();
 }
 
@@ -62,5 +77,4 @@ void Window::createWindow(const std::string title){
     glutDisplayFunc(frame);  // initialize my frame
     glutKeyboardFunc(keyEvent);
     glutTimerFunc(timeRate, loop, 0);
-    //glutIdleFunc(loop2);
 }

@@ -21,3 +21,7 @@ float Vertex::getY(){
 float Vertex::getDistance(Vertex v1, Vertex v2){
     return (float)sqrt((float)pow( v1.x - v2.x , 2) + (float)pow(v1.y - v2.y, 2));
 }
+
+bool Vertex::Compare(Vertex v1, Vertex v2){
+    return v1.x == v2.x && v1.y == v2.y;
+}

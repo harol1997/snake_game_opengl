@@ -10,4 +10,5 @@ class Vertex{
         float getX();
         float getY();
         static float getDistance(Vertex, Vertex);//get Distance between two vertex
+        static bool Compare(Vertex, Vertex);
 };

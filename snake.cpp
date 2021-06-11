@@ -70,7 +70,6 @@ void Snake::move(unsigned char direction){
 void Snake::changePosition(int minusX, int minusY){  //minusX is row, minusY is column
     Vertex lastPosition = this->positions.back();
     Square squareEraser = this->squares[(int)lastPosition.getX()][(int)lastPosition.getY()];
-    std::cout<<squareEraser.getV1().getX()<<std::endl;
     squareEraser.drawOneSquare();
 
     this->positions.pop_back();
@@ -81,4 +80,8 @@ void Snake::changePosition(int minusX, int minusY){  //minusX is row, minusY is 
 
 unsigned char Snake::getLastDirection(){
     return this->lastDirection;
+}
+
+std::list<Vertex> Snake::getPositions(){
+    return this->positions;
 }

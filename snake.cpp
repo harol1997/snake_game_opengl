@@ -1,16 +1,22 @@
 #include "snake.h"
 #include <math.h>
+#include <GL/freeglut.h>
 
 Snake::Snake(Square **squares){
     this->squares = squares;
     this->lastDirection = 'd';
     this->initBodySnake(3, 4, 4);
+    this->speed = 1000.0f;
+    this->speedRate = 50.0f;
+
 }
 
-Snake::Snake(int initialSize, int initialRow, int initialColumn, Square **squares, unsigned char lastDirection){
+Snake::Snake(int initialSize, int initialRow, int initialColumn, Square **squares, unsigned char lastDirection, float speed, float speedRate){
     this->squares = squares;
     this->lastDirection = lastDirection;
     this->initBodySnake(initialSize, initialRow, initialColumn);
+    this->speed = speed;
+    this->speedRate = speedRate;
 }
 
 void Snake::initBodySnake(int initialSize, int initialRow, int initialColumn){
@@ -26,12 +32,11 @@ void Snake::drawBody(){
     
     for(it=this->positions.begin(); it!= this->positions.end(); it++){
         Square square = this->squares[(int)(*it).getX()][(int)(*it).getY()];
-        float centerX = (square.getV2().getX() + square.getV4().getX())/2;
-        float centerY = (square.getV2().getY() + square.getV4().getY())/2;
         
-        Circle circle(centerX, centerY, square.getL()/2.0);
+        Circle circle(square.getMiddlePoint(), square.getL()/2.0);
         circle.drawCircle();
     }
+    
 }
 
 void Snake::move(unsigned char direction){
@@ -84,4 +89,19 @@ unsigned char Snake::getLastDirection(){
 
 std::list<Vertex> Snake::getPositions(){
     return this->positions;
+}
+
+
+void Snake::eat(){
+    Vertex lastPosition = this->positions.back();
+    this->move(this->lastDirection);
+    this->positions.push_back(lastPosition);
+}
+
+float Snake::getSpeed(){
+    return this->speed;
+}
+
+void Snake::slowDown(){
+    this->speed -= this->speedRate;
 }

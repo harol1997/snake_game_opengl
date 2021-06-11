@@ -1,5 +1,4 @@
 #include "square.h"
-#include "vertex.h"
 #include <GL/freeglut.h>
 
 Square::Square(Vertex v1, Vertex v2, Vertex v3, Vertex v4){
@@ -80,10 +79,9 @@ void Square::drawOneSquare(){
     glVertex2f(v1.getX(), v1.getY());
     
     glEnd();
-
+    
     //draw the square lines
-
-    glutSwapBuffers();
+    
 }
 
 Vertex Square::getV1(){
@@ -106,6 +104,22 @@ float Square::getL(){
     return Vertex::getDistance(this->v1, this->v2);
 }
 
+Vertex Square::getMiddlePoint(){
+    
+    Vertex middleVertex((this->v2.getX() + this->v4.getX())/2,
+                        (this->v2.getY() + this->v4.getY())/2);
+    return middleVertex;
+}
+
 bool Square::Compare(Square s1, Square s2){
     return Vertex::Compare(s1.v1, s2.v1) && Vertex::Compare(s1.v2, s2.v2) && Vertex::Compare(s1.v3, s2.v3) && Vertex::Compare(s1.v4, s2.v4);
+}
+
+void Square::printSquare(std::string name){
+    std::cout<<name<<std::endl;
+    std::cout<<"V1: "<<this->v1.getX()<<","<<this->v1.getY()<<std::endl;
+    std::cout<<"V2: "<<this->v2.getX()<<","<<this->v2.getY()<<std::endl;
+    std::cout<<"V3: "<<this->v3.getX()<<","<<this->v3.getY()<<std::endl;
+    std::cout<<"V4: "<<this->v4.getX()<<","<<this->v4.getY()<<std::endl;
+    std::cout<<std::endl;
 }

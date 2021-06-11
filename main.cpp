@@ -8,13 +8,9 @@
 #include "gameWindow.h"
 int main(int arg, char** args){
     
-    glutInit(&arg, args);
+    Window gamewindow(500,500, &arg, args);
 
-    Window gamewindow(500,500);
-
-    gamewindow.createWindow("titulo");
-
-    glutMainLoop();
+    gamewindow.startGame("titulo");
 
 return 0;
 }

@@ -1,13 +1,17 @@
 #pragma once
 
+#include "vertex.h"
+
 class Circle{
 
     private:
-        float centerX, centerY, radio;
+        float radio;
+        Vertex center;
         
 
     public:
-        Circle(float a, float b, float radio);
+        Circle(Vertex, float radio);
         void drawCircle();
+        void drawCircle(float, float, float);
 
 };

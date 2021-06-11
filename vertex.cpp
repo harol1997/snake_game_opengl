@@ -18,10 +18,10 @@ float Vertex::getY(){
     return this->y;
 }
 
-float Vertex::getDistance(Vertex v1, Vertex v2){
+float Vertex::getDistance(Vertex v1, Vertex v2){  // when vertex are board coordenates
     return (float)sqrt((float)pow( v1.x - v2.x , 2) + (float)pow(v1.y - v2.y, 2));
 }
 
-bool Vertex::Compare(Vertex v1, Vertex v2){
+bool Vertex::Compare(Vertex v1, Vertex v2){ // when vertex are board coordenates
     return v1.x == v2.x && v1.y == v2.y;
 }

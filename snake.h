@@ -13,14 +13,17 @@ class Snake{
         Square **squares; // all board's squares
         void initBodySnake(int, int, int);
         void changePosition(int, int); // to change position in Board
+        float speed;  //  (-) snake is faster
+        float speedRate;  // variacion de la velocidad
 
     public:
         unsigned char getLastDirection();
         Snake(Square**);
-        Snake(int, int, int, Square**, unsigned char);
+        Snake(int, int, int, Square**, unsigned char, float, float);
         void drawBody();
         void eat();
         void move(unsigned char);
-        void increase();
         std::list<Vertex> getPositions();//get Body
+        float getSpeed();
+        void slowDown();
 };

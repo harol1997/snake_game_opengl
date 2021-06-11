@@ -1,6 +1,7 @@
 #pragma once
 
 #include "vertex.h"
+#include <iostream>
 
 class Square{
 
@@ -18,5 +19,7 @@ class Square{
         Vertex getV3();
         Vertex getV4();
         float getL();  // distance between two vertex
-        static bool Compare(Square, Square);  
+        Vertex getMiddlePoint();
+        static bool Compare(Square, Square);
+        void printSquare(std::string);  // to try
 };

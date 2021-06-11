@@ -55,9 +55,6 @@ void Board::drawBoard(){
         screenCoordenates[6] = -1.0f;
         screenCoordenates[7] = screenCoordenates[7]-rate;
     }
-
-    
-    glutSwapBuffers();
     
 }
 

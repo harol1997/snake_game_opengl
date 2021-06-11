@@ -7,13 +7,9 @@ class Window{
         int width, height;
         
     public:
-        Window(int, int);
+        Window(int, int, int*, char**);
         Window();
-        void createWindow(const std::string);
+        void startGame(const std::string);
         static void initWindow();
         
 };
-
-void frame();
-void keyEvent(unsigned char, int, int);
-void loop();

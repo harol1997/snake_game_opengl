@@ -11,9 +11,9 @@ class Square{
     public:
         Square();
         Square(Vertex, Vertex, Vertex, Vertex);
-        void drawSquare();
+        void drawSquare(float, float, float);
         void drawOneSquare();
-        void drawSolidSquare();
+        void drawSolidSquare(float, float, float);
         Vertex getV1();
         Vertex getV2();
         Vertex getV3();

@@ -1,5 +1,6 @@
 #include "snake.h"
-#include <math.h>
+#include "circle.h"
+
 #include <GL/freeglut.h>
 
 Snake::Snake(Square **squares){
@@ -8,9 +9,10 @@ Snake::Snake(Square **squares){
     this->initBodySnake(3, 4, 4);
     this->speed = 1000.0f;
     this->speedRate = 50.0f;
+    this->minusSpeed = 100.0f;
 
 }
-
+//
 Snake::Snake(int initialSize, int initialRow, int initialColumn, Square **squares, unsigned char lastDirection, float speed, float speedRate){
     this->squares = squares;
     this->lastDirection = lastDirection;
@@ -32,9 +34,9 @@ void Snake::drawBody(){
     
     for(it=this->positions.begin(); it!= this->positions.end(); it++){
         Square square = this->squares[(int)(*it).getX()][(int)(*it).getY()];
-        
-        Circle circle(square.getMiddlePoint(), square.getL()/2.0);
-        circle.drawCircle();
+        square.drawSolidSquare(0.0, 0.4, 0.2);
+        //Circle circle(square.getMiddlePoint(), square.getL()/2);
+        //circle.drawCircle(0.0, 0.4, 0.2);
     }
     
 }
@@ -75,12 +77,15 @@ void Snake::move(unsigned char direction){
 void Snake::changePosition(int minusX, int minusY){  //minusX is row, minusY is column
     Vertex lastPosition = this->positions.back();
     Square squareEraser = this->squares[(int)lastPosition.getX()][(int)lastPosition.getY()];
-    squareEraser.drawOneSquare();
-
+    squareEraser.drawSolidSquare(0.8549f, 0.8549f, 0.8549f);
     this->positions.pop_back();
     Vertex firstPosition = this->positions.front();
     Vertex newPosition(firstPosition.getX()+minusX, firstPosition.getY()+minusY);
     this->positions.push_front(newPosition);
+    
+    //Circle circleEraser(squareEraser.getMiddlePoint(), squareEraser.getL()/2);
+    //circleEraser.drawCircle(0.8549f, 0.8549f, 0.8549f);
+
 }
 
 unsigned char Snake::getLastDirection(){
@@ -91,10 +96,9 @@ std::list<Vertex> Snake::getPositions(){
     return this->positions;
 }
 
-
 void Snake::eat(){
     Vertex lastPosition = this->positions.back();
-    this->move(this->lastDirection);
+    //this->move(this->lastDirection);
     this->positions.push_back(lastPosition);
 }
 
@@ -104,4 +108,5 @@ float Snake::getSpeed(){
 
 void Snake::slowDown(){
     this->speed -= this->speedRate;
+    if(this->speed < this->minusSpeed) this->speed = this->minusSpeed;
 }

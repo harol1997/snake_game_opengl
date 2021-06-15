@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <list>
-#include "circle.h"
 #include "square.h"
 #include "vertex.h"  // Here It is used for snake positions
 
@@ -15,6 +14,7 @@ class Snake{
         void changePosition(int, int); // to change position in Board
         float speed;  //  (-) snake is faster
         float speedRate;  // variacion de la velocidad
+        float minusSpeed;
 
     public:
         unsigned char getLastDirection();

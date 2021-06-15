@@ -13,9 +13,9 @@ Square::Square(){
 
 }
 
-void Square::drawSquare(){  // // Afer you have to CleanBuffer --> GLSwap where you will use this function
+void Square::drawSquare(float r, float g, float b){  // // Afer you have to CleanBuffer --> GLSwap where you will use this function
     
-    glColor3f(0, 0, 0);
+    glColor3f(r, g, b);
     glBegin(GL_LINES);
 
     glVertex2f(v1.getX(), v1.getY());
@@ -33,15 +33,16 @@ void Square::drawSquare(){  // // Afer you have to CleanBuffer --> GLSwap where 
     glEnd();   
 }
 
-void Square::drawSolidSquare(){  // Afer you have to CleanBuffer
+void Square::drawSolidSquare(float r, float g, float b){  // Afer you have to CleanBuffer
     //draw the new square
-    glColor3f(0.53f, 0.5f, 0.51f);
-    glBegin(GL_QUADS);
+    glColor3f(r, g, b);
+    glBegin(GL_POLYGON);
     
     glVertex2f(v1.getX(), v1.getY());
     glVertex2f(v2.getX(), v2.getY());
     glVertex2f(v3.getX(), v3.getY());
     glVertex2f(v4.getX(), v4.getY());
+    glVertex2f(v1.getX(), v1.getY());
     
     glEnd();
 }
@@ -49,7 +50,7 @@ void Square::drawSolidSquare(){  // Afer you have to CleanBuffer
 void Square::drawOneSquare(){
     
     //draw the new square
-    glColor3f(0.8549f, 0.8549f, 0.8549f);
+    glColor3f(1.f, 1.f, 1.f);
     glBegin(GL_QUADS);
     
     glVertex2f(v1.getX(), v1.getY());

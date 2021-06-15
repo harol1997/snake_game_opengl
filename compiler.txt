@@ -1,2 +1,2 @@
-g++ circle.cpp snake.cpp square.cpp vertex.cpp board.cpp gameWindow.cpp main.cpp -lpthread -lGL -lGLU -lglut
-g++ -I "../Header Files"  food.cpp circle.cpp snake.cpp square.cpp vertex.cpp board.cpp gameWindow.cpp main.cpp -lpthread -lGL -lGLU -lglut
+g++ score.cpp food.cpp circle.cpp snake.cpp square.cpp vertex.cpp board.cpp gameWindow.cpp main.cpp -lpthread -lGL -lGLU -lglutg++ -I "../Header Files"  food.cpp circle.cpp snake.cpp square.cpp vertex.cpp board.cpp gameWindow.cpp main.cpp -lpthread -lGL -lGLU -lglut
+g++ try.cpp -lGL -lGLU -lglut

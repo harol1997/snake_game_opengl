@@ -10,7 +10,7 @@ int main(int arg, char** args){
     
     Window gamewindow(500,500, &arg, args);
 
-    gamewindow.startGame("titulo");
+    gamewindow.startGame("Snake Game");
 
 return 0;
 }

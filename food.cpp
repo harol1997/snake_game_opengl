@@ -24,13 +24,12 @@ Food Food::generateFood(Snake snake, int rowNumbers, int columnNumbers){
 
 }
 
-
 void Food::drawFood(Board board){
     // 0.03 0.33 1
 
     Square square = board.getBoard()[(int)this->position.getX()][(int)this->position.getY()];
 
-    Circle circle(square.getMiddlePoint(), square.getL()/2);
+    Circle circle(square.getMiddlePoint(), square.getL()/2.2);
     circle.drawCircle(0.03f, 0.33f, 1.0f);
 
 }

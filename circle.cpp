@@ -13,11 +13,11 @@ void Circle::drawCircle(float r, float g, float b){
     
     glColor3f(r, g, b);
     glBegin(GL_POLYGON);
-
+    
     for(int alpha = 0; alpha<360; alpha++){
         alphaRad = alpha*M_PI/180;
-        glVertex2f(this->center.getX()+this->radio*cos(alphaRad),
-                    this->center.getY()+this->radio*sin(alphaRad));
+        glVertex2f(this->center.getX()+(float)this->radio*cos(alphaRad),
+                    this->center.getY()+(float)this->radio*sin(alphaRad));
     }
 
     glEnd();
